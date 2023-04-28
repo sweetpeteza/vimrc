@@ -13,8 +13,8 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({ 
-	  'rose-pine/neovim', 
+  use({
+	  'rose-pine/neovim',
 	  as = 'rose-pine',
 	  config = function()
 		  vim.cmd('colorscheme rose-pine')
@@ -25,29 +25,52 @@ return require('packer').startup(function(use)
   use( 'theprimeagen/harpoon' )
   use( 'mbbill/undotree' )
   use( 'tpope/vim-fugitive' )
-  use( 'OmniSharp/omnisharp-vim' )
-  
+
   use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
-  requires = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v1.x',
+      requires = {
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},             -- Required
+          {'williamboman/mason.nvim'},           -- Optional
+          {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},         -- Required
+          {'hrsh7th/cmp-nvim-lsp'},     -- Required
+          {'hrsh7th/cmp-buffer'},       -- Optional
+          {'hrsh7th/cmp-path'},         -- Optional
+          {'saadparwaiz1/cmp_luasnip'}, -- Optional
+          {'hrsh7th/cmp-nvim-lua'},     -- Optional
 
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
+          -- Snippets
+          {'L3MON4D3/LuaSnip'},             -- Required
+          {'rafamadriz/friendly-snippets'}, -- Optional
+      }
   }
+
+  use ('tanvirtin/monokai.nvim')
+  use ('ThePrimeagen/vim-be-good')
+  use 'xiyaowong/transparent.nvim'
+  --use 'wxfr/minimap.vim'
+
+  --omnisharp
+  use ('OmniSharp/omnisharp-vim')
+  use 'nickspoons/vim-sharpenup'
+  use 'dense-analysis/ale'
+
+--  use 'mfussenegger/nvim-dap'
+--  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+   use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+        "kyazdani42/nvim-web-devicons",
+    },
+    cmd = { "NvimTreeToggle", "NvimTreeClose" },
+    config = function()
+        require("config.nvimtree").setup()
+    end,
 }
+
 
 end)

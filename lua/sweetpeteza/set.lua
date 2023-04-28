@@ -1,4 +1,4 @@
-vim.opt.guicursor = ""
+vim.opt.guicursor = "i:block"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -26,8 +26,11 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.splitright = true
 
+vim.g.netrw_banner = 0
+vim.g.netrw_altv = 1

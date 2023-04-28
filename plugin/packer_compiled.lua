@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ale = {
+    loaded = true,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ale",
+    url = "https://github.com/dense-analysis/ale"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
@@ -129,6 +134,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["monokai.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\monokai.nvim",
+    url = "https://github.com/tanvirtin/monokai.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
@@ -139,10 +149,24 @@ _G.packer_plugins = {
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    commands = { "NvimTreeToggle", "NvimTreeClose" },
+    config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config.nvimtree\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["omnisharp-vim"] = {
     loaded = true,
@@ -170,15 +194,30 @@ _G.packer_plugins = {
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["transparent.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\transparent.nvim",
+    url = "https://github.com/xiyaowong/transparent.nvim"
+  },
   undotree = {
     loaded = true,
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-sharpenup"] = {
+    loaded = true,
+    path = "C:\\Users\\PeterA\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-sharpenup",
+    url = "https://github.com/nickspoons/vim-sharpenup"
   }
 }
 
@@ -187,6 +226,25 @@ time([[Defining packer_plugins]], false)
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
 time([[Config for rose-pine]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-tree.lua'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('NvimTreeToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'NvimTreeClose', function(cmdargs)
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeClose', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-tree.lua'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('NvimTreeClose ', 'cmdline')
+      end})
+time([[Defining lazy-load commands]], false)
+
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

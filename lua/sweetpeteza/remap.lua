@@ -25,7 +25,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"n", "v"}, "<leader>tl", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -49,4 +49,17 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+vim.keymap.set('n', '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+-- The following command requires plug-ins "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", and optionally "kyazdani42/nvim-web-devicons" for icon support
+vim.keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })
+-- If you don't want to use the telescope plug-in but still want to see all the errors/warnings, comment out the telescope line and uncomment this:
+-- vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
+vim.keymap.set({"n","i"}, "<leader>.", ":OmniSharpGetCodeActions<CR>")
+vim.keymap.set("n", "<C-r><C-t>", ":OmniSharpRunTest<CR>")
+vim.keymap.set("n", "<C-r>t", ":OmniSharpRunTestsInFile<CR>")
 
+vim.keymap.set("n", "<C-p>b", ":!dotnet build<CR>")
+vim.keymap.set("n", "<C-p>c", ":!dotnet clean<CR>")
+vim.keymap.set("n", "<C-p>r", ":!dotnet run<CR>")
