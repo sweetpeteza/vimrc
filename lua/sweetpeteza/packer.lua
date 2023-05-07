@@ -59,18 +59,27 @@ return require('packer').startup(function(use)
   use 'nickspoons/vim-sharpenup'
   use 'dense-analysis/ale'
 
---  use 'mfussenegger/nvim-dap'
---  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-   use {
-    "kyazdani42/nvim-tree.lua",
-    requires = {
-        "kyazdani42/nvim-web-devicons",
-    },
-    cmd = { "NvimTreeToggle", "NvimTreeClose" },
-    config = function()
-        require("config.nvimtree").setup()
-    end,
-}
+  use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
+  use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {
+          "kyazdani42/nvim-web-devicons",
+      },
+      cmd = { "NvimTreeToggle", "NvimTreeClose" },
+      config = function()
+          require("config.nvimtree").setup()
+      end,
+  }
+
+  use 'puremourning/vimspector'
+
+  use {
+      'ldelossa/gh.nvim',
+      requires = { { 'ldelossa/litee.nvim' } },
+  }
+
+  use 'rcarriga/nvim-notify'
 
 end)
