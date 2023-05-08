@@ -1,3 +1,2 @@
 require("sweetpeteza")
-print("Hello")
 

@@ -34,3 +34,5 @@ vim.opt.splitright = true
 
 vim.g.netrw_banner = 0
 vim.g.netrw_altv = 1
+
+vim.g.transparent_enabled = true
