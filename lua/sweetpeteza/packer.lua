@@ -82,4 +82,12 @@ return require('packer').startup(function(use)
 
   use 'rcarriga/nvim-notify'
 
+  use {
+      'previm/previm',
+      config = function()
+          vim.g.previm_open_cmd = 'google-chrome'
+      end,
+  }
+
+
 end)
