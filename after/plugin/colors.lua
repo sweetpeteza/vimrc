@@ -1,4 +1,4 @@
-require('monokai').setup 
+require('monokai').setup
     {
     palette = {
         name = 'monokai',

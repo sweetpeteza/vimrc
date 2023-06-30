@@ -57,3 +57,5 @@ vim.keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>', { noremap = 
 vim.keymap.set("n", "<C-p>b", ":!dotnet build<CR>")
 vim.keymap.set("n", "<C-p>c", ":!dotnet clean<CR>")
 vim.keymap.set("n", "<C-p>r", ":!dotnet run<CR>")
+
+vim.keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w>h",{silent = true})

@@ -26,6 +26,14 @@ return require('packer').startup(function(use)
   use( 'mbbill/undotree' )
   use( 'tpope/vim-fugitive' )
 
+  use({
+      "kdheepak/lazygit.nvim",
+      -- optional for floating window border decoration
+      requires = {
+          "nvim-lua/plenary.nvim",
+      },
+  })
+
   use {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v1.x',
@@ -62,22 +70,12 @@ return require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
-  use {
-      "kyazdani42/nvim-tree.lua",
-      requires = {
-          "kyazdani42/nvim-web-devicons",
-      },
-      cmd = { "NvimTreeToggle", "NvimTreeClose" },
-      config = function()
-          require("config.nvimtree").setup()
-      end,
-  }
 
   use 'puremourning/vimspector'
 
   use {
       'ldelossa/gh.nvim',
-      requires = { { 'ldelossa/litee.nvim' } },
+      requires = { 'ldelossa/litee.nvim' },
   }
 
   use 'rcarriga/nvim-notify'
@@ -88,6 +86,24 @@ return require('packer').startup(function(use)
           vim.g.previm_open_cmd = 'google-chrome'
       end,
   }
+  -- Database
+  use {
+      "tpope/vim-dadbod",
+      opt = true,
+      requires = {
+          "kristijanhusak/vim-dadbod-ui",
+          "kristijanhusak/vim-dadbod-completion",
+      },
+      cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+  }
 
+  use {
+      "nvim-neotest/neotest",
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "nvim-treesitter/nvim-treesitter",
+          "antoinemadec/FixCursorHold.nvim",
+      }
+  }
 
 end)

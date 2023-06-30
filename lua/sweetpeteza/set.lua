@@ -30,9 +30,13 @@ vim.opt.updatetime = 250
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-vim.g.netrw_banner = 0
+--vim.g.netrw_banner = 0
 vim.g.netrw_altv = 1
+vim.g.netrw_keepdir = 0
 
 vim.g.transparent_enabled = true
+vim.g.wildmenu = 1
+vim.g.wildmode = "list:longest,full"
