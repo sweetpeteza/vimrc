@@ -13,18 +13,14 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
-
   use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use( 'theprimeagen/harpoon' )
   use( 'mbbill/undotree' )
   use( 'tpope/vim-fugitive' )
+
+  use {
+      'echasnovski/mini.nvim'
+  }
 
   use({
       "kdheepak/lazygit.nvim",
@@ -57,6 +53,9 @@ return require('packer').startup(function(use)
       }
   }
 
+  -- Adds extra functionality over rust analyzer
+  use("simrat39/rust-tools.nvim")
+
   use ('tanvirtin/monokai.nvim')
   use ('ThePrimeagen/vim-be-good')
   use 'xiyaowong/transparent.nvim'
@@ -80,12 +79,6 @@ return require('packer').startup(function(use)
 
   use 'rcarriga/nvim-notify'
 
-  use {
-      'previm/previm',
-      config = function()
-          vim.g.previm_open_cmd = 'google-chrome'
-      end,
-  }
   -- Database
   use {
       "tpope/vim-dadbod",

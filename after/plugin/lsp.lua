@@ -13,7 +13,8 @@ lsp.setup_servers(
         'tsserver',
         'eslint',
         'omnisharp',
-        'sqlls'
+        'sqlls',
+        'rustanalyzer'
     })
 -- Fix Undefined global 'vim'
 lsp.configure('lua-language-server', {
