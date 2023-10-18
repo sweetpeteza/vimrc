@@ -16,6 +16,7 @@ return {
     'tpope/vim-rhubarb',
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
+    'aquach/vim-http-client',
     {
         'simrat39/rust-tools.nvim',
         init = function()
@@ -179,6 +180,12 @@ return {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
         build = ':TSUpdate',
+    },
+    {
+        "rcarriga/nvim-notify",
+        init = function()
+            vim.notify = require("notify")
+        end
     },
     -- lazy.nvim
     {
