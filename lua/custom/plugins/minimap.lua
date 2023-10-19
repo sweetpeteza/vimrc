@@ -1,5 +1,6 @@
 return {
   "wfxr/minimap.vim",
+  enabled = false,
   build = "cargo install --locked code-minimap",
   lazy = false,
   cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },

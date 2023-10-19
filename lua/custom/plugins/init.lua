@@ -16,7 +16,26 @@ return {
     'tpope/vim-rhubarb',
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
+    {
+        'goolord/alpha-nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.startify'.config)
+        end
+    },
     'aquach/vim-http-client',
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons'
+    },
+    {
+        'echasnovski/mini.nvim',
+        version = false,
+        init = function()
+            require('mini.pairs').setup()
+        end
+    },
     {
         'simrat39/rust-tools.nvim',
         init = function()
@@ -127,7 +146,7 @@ return {
     {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
-        enabled = false,
+        enabled = true,
         -- Enable `lukas-reineke/indent-blankline.nvim`
         -- See `:help indent_blankline.txt`
         main    = "ibl",
