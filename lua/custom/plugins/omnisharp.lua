@@ -1,6 +1,11 @@
 return {
   'OmniSharp/omnisharp-vim',
   lazy = true,
+  enabled = true,
+  dependencies = {
+    'nickspoons/vim-sharpenup',
+    'Hoffs/omnisharp-extended-lsp.nvim'
+  },
   config = function()
     vim.g.OmniSharp_diagnostic_exclude_paths = {
       'obj\\',
@@ -17,8 +22,6 @@ return {
 
     vim.g.OmniSharp_server_use_mono = 0
     vim.g.OmniSharp_server_use_net6 = 1
-
-    vim.g.OmniSharp_selector_findusages = 'fzf'
   end,
-  ft = "cs"
+  --  ft = "cs"
 }

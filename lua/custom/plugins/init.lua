@@ -8,7 +8,6 @@ return {
     'christoomey/vim-tmux-navigator',
     'tanvirtin/monokai.nvim',
     'xiyaowong/transparent.nvim',
-    'nickspoons/vim-sharpenup',
     'sbdchd/neoformat',
     'puremourning/vimspector',
     -- Git related plugins
@@ -192,6 +191,11 @@ return {
             },
         },
     },
+    -- another fuzzy finder
+    {
+        'liuchengxu/vim-clap',
+        build = ':Clap install-binary'
+    },
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
@@ -220,7 +224,7 @@ return {
             -- OPTIONAL:
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
+            --"rcarriga/nvim-notify",
         }
     }
 }
