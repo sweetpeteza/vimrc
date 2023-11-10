@@ -57,6 +57,11 @@ vim.keymap.set("n", "<C-p>b", ":!dotnet build<CR>")
 vim.keymap.set("n", "<C-p>c", ":!dotnet clean<CR>")
 vim.keymap.set("n", "<C-p>r", ":!dotnet run<CR>")
 
+vim.keymap.set("n", "<C-b>j", ":MoveBufferDown<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-b>k", ":MoveBufferUp<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-b>h", ":MoveBufferLeft<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-b>l", ":MoveBufferRight<CR>", { noremap = true, silent = true })
+
 vim.keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w>h", { silent = true })
 
 vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
