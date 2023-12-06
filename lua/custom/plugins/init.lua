@@ -14,6 +14,7 @@ return {
     -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
+    'theprimeagen/git-worktree.nvim',
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
     {
@@ -62,7 +63,16 @@ return {
         branch = 'master',
         dependencies = { { 'nvim-lua/plenary.nvim' } }
     },
-
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    },
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
     {
@@ -178,6 +188,7 @@ return {
         branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
+            'nvim-lua/popup.nvim',
             -- Fuzzy Finder Algorithm which requires local dependencies to be built.
             -- Only load if `make` is available. Make sure you have the system
             -- requirements installed.
