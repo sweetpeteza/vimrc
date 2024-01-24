@@ -8,6 +8,7 @@ return {
     'christoomey/vim-tmux-navigator',
     'tanvirtin/monokai.nvim',
     'xiyaowong/transparent.nvim',
+    'gpanders/editorconfig.nvim',
     'sbdchd/neoformat',
     'puremourning/vimspector',
     'c60cb859/bufMov.nvim',
@@ -23,6 +24,27 @@ return {
         config = function()
             require 'alpha'.setup(require 'alpha.themes.startify'.config)
         end
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
+    {
+        "ldelossa/gh.nvim",
+        dependencies = {
+            {
+                "ldelossa/litee.nvim",
+                config = function()
+                    require("litee.lib").setup()
+                end,
+            },
+        },
+        config = function()
+            require("litee.gh").setup()
+        end,
     },
     'aquach/vim-http-client',
     {

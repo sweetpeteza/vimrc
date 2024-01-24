@@ -28,7 +28,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -95,3 +95,10 @@ vim.g.minimap_auto_start_win_enter = 1
 vim.diagnostic.config({
     virtual_text = false,
 })
+
+-- vim.cmd([[
+--     augroup fmt
+--       autocmd!
+--       autocmd BufWritePre * undojoin | Neoformat
+--     augroup END
+-- ]])
