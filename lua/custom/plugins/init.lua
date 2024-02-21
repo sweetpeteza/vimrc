@@ -10,12 +10,17 @@ return {
     'xiyaowong/transparent.nvim',
     'gpanders/editorconfig.nvim',
     'sbdchd/neoformat',
-    'puremourning/vimspector',
+    --    'puremourning/vimspector',
     'c60cb859/bufMov.nvim',
     -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'theprimeagen/git-worktree.nvim',
+    -- Lua
+    {
+        "0oAstro/dim.lua",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+    },
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
     {
@@ -259,6 +264,25 @@ return {
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
             --"rcarriga/nvim-notify",
-        }
+        },
+        { -- This plugin
+            "Zeioth/compiler.nvim",
+            cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+            dependencies = { "stevearc/overseer.nvim" },
+            opts = {},
+        },
+        { -- The task runner we use
+            "stevearc/overseer.nvim",
+            commit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0",
+            cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+            opts = {
+                task_list = {
+                    direction = "bottom",
+                    min_height = 25,
+                    max_height = 25,
+                    default_detail = 1
+                },
+            },
+        },
     }
 }

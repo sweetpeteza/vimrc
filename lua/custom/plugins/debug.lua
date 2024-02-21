@@ -5,7 +5,6 @@
 -- Primarily focused on configuring the debugger for Go, but can
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
-
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -63,6 +62,7 @@ return {
       --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
+        enabled = false,
         icons = {
           pause = '⏸',
           play = '▶',
@@ -159,12 +159,32 @@ return {
           return dll
         end,
       },
+      {
+        type = "coreclr",
+        name = "attach",
+        request = "attach",
+        console = "integratedTerminal",
+        env = vim.g.dotnet_get_env,
+        processId = function()
+          return vim.fn.input('Process Id:')
+        end,
+        program = function()
+          return '/home/peter/playbk/pbk-api-core/Pbk.Api/bin/Debug/net6.0/Pbk.Api.dll'
+        end
+      }
     }
+
     dap.configurations.cs = config
 
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    dap.listeners.after.event_initialized['dapui_config'] = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated['dapui_config'] = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited['dapui_config'] = function()
+      dapui.close()
+    end
 
     -- Install golang specific config
     require('dap-go').setup()

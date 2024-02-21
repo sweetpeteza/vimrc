@@ -37,7 +37,7 @@ vim.opt.splitright = true
 vim.g.netrw_altv = 1
 vim.g.netrw_keepdir = 0
 
-vim.g.transparent_enabled = false
+vim.g.transparent_enabled = true
 vim.g.wildmenu = 1
 vim.g.wildmode = "list:longest,full"
 
