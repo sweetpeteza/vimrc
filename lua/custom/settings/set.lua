@@ -43,7 +43,16 @@ vim.g.wildmode = "list:longest,full"
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 -- kickstart
-vim.cmd.colorscheme "catppuccin-mocha"
+
+vim.g.sonokai_style = 'andromeda'
+vim.g.sonokai_better_performance = 1
+
+vim.cmd.colorscheme "sonokai"
+
+--vim.g.aurora_italic = 1      -- italic
+--vim.g.aurora_transparent = 1 -- transparent
+--vim.g.aurora_bold = 1        -- bold
+--vim.g.aurora_darker = 1      -- darker backgroundim.g.aurora_italic = 1
 
 
 -- [[ Setting options ]]

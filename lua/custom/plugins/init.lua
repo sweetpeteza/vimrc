@@ -209,6 +209,8 @@ return {
             }
         }
     },
+    { 'ray-x/aurora' },
+    { 'sainnhe/sonokai' },
     -- Fuzzy Finder (files, lsp, etc)
     {
         'nvim-telescope/telescope.nvim',
