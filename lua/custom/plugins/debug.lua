@@ -44,15 +44,15 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F10>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F11>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F9>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<F17>', dap.terminate, { desc = 'Debug: Stop' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    --    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    --    vim.keymap.set('n', '<F10>', dap.step_into, { desc = 'Debug: Step Into' })
+    --    vim.keymap.set('n', '<F11>', dap.step_over, { desc = 'Debug: Step Over' })
+    --    vim.keymap.set('n', '<F9>', dap.step_out, { desc = 'Debug: Step Out' })
+    --    vim.keymap.set('n', '<F17>', dap.terminate, { desc = 'Debug: Stop' })
+    --    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    --    vim.keymap.set('n', '<leader>B', function()
+    --      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+    --    end, { desc = 'Debug: Set Breakpoint' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -81,100 +81,100 @@ return {
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     -- CSHARP
-    dap.adapters.coreclr = {
-      type = 'executable',
-      command = '/usr/local/netcoredbg',
-      args = { '--interpreter=vscode', "--engineLogging=dap_log.txt" }
-    }
+    --    dap.adapters.coreclr = {
+    --      type = 'executable',
+    --      command = '/usr/local/netcoredbg',
+    --      args = { '--interpreter=vscode', "--engineLogging=dap_log.txt" }
+    --    }
 
-    vim.g.dotnet_build_project = function()
-      local default_path = vim.fn.getcwd() .. "/"
-      if vim.g["dotnet_last_proj_path"] ~= nil then
-        default_path = vim.g["dotnet_last_proj_path"]
-      end
-      local path = vim.fn.input({ prompt = "Path to your *proj file: ", default = default_path, completion = "file" })
-      vim.g["dotnet_last_proj_path"] = path
-      local cmd = 'dotnet build -c Debug "' .. path .. '"'
-      print("\n")
-      print("Cmd to execute: " .. cmd)
-      local f = os.execute(cmd)
-      if f == 0 then
-        print("\nBuild: OK")
-      else
-        print("\nBuild: ERR: " .. f)
-      end
-    end
-
-    vim.g.dotnet_get_dll_path = function()
-      local request = function()
-        return vim.fn.input({
-          prompt = "Path to dll: ",
-          default = vim.fn.getcwd() .. "/bin/Debug/",
-          completion = "file",
-        })
-      end
-
-      if vim.g["dotnet_last_dll_path"] == nil then
-        vim.g["dotnet_last_dll_path"] = request()
-      else
-        if
-            vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2)
-            == 1
-        then
-          vim.g["dotnet_last_dll_path"] = request()
-        end
-      end
-      return vim.g["dotnet_last_dll_path"]
-    end
-    local launch_json = vim.fn.getcwd() .. "/.nvim/env.json"
-    local readAll = function(file)
-      local f = assert(io.open(file, "rb"))
-      local content = f:read("*all")
-      f:close()
-      return content
-    end
-
-    local load_json = function()
-      return vim.json.decode(readAll(launch_json))
-    end
-    vim.g.dotnet_get_env = function()
-      if vim.g["dotnet_env_vars"] == nil then
-        vim.g["dotnet_env_vars"] = load_json()
-      end
-      return vim.g["dotnet_env_vars"]
-    end
-
-    local config = {
-      {
-        type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        console = "integratedTerminal",
-        env = vim.g.dotnet_get_env,
-        program = function()
-          if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
-            vim.g.dotnet_build_project()
-          end
-          local dll = vim.g.dotnet_get_dll_path()
-          return dll
-        end,
-      },
-      {
-        type = "coreclr",
-        name = "attach",
-        request = "attach",
-        console = "integratedTerminal",
-        env = vim.g.dotnet_get_env,
-        processId = function()
-          return vim.fn.input('Process Id:')
-        end,
-        program = function()
-          return '/home/peter/playbk/pbk-api-core/Pbk.Api/bin/Debug/net6.0/Pbk.Api.dll'
-        end
-      }
-    }
-
-    dap.configurations.cs = config
+    --    vim.g.dotnet_build_project = function()
+    --      local default_path = vim.fn.getcwd() .. "/"
+    --      if vim.g["dotnet_last_proj_path"] ~= nil then
+    --        default_path = vim.g["dotnet_last_proj_path"]
+    --      end
+    --      local path = vim.fn.input({ prompt = "Path to your *proj file: ", default = default_path, completion = "file" })
+    --      vim.g["dotnet_last_proj_path"] = path
+    --      local cmd = 'dotnet build -c Debug "' .. path .. '"'
+    --      print("\n")
+    --      print("Cmd to execute: " .. cmd)
+    --      local f = os.execute(cmd)
+    --      if f == 0 then
+    --        print("\nBuild: OK")
+    --      else
+    --        print("\nBuild: ERR: " .. f)
+    --      end
+    --    end
+    --
+    --    vim.g.dotnet_get_dll_path = function()
+    --      local request = function()
+    --        return vim.fn.input({
+    --          prompt = "Path to dll: ",
+    --          default = vim.fn.getcwd() .. "/bin/Debug/",
+    --          completion = "file",
+    --        })
+    --      end
+    --
+    --      if vim.g["dotnet_last_dll_path"] == nil then
+    --        vim.g["dotnet_last_dll_path"] = request()
+    --      else
+    --        if
+    --            vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2)
+    --            == 1
+    --        then
+    --          vim.g["dotnet_last_dll_path"] = request()
+    --        end
+    --      end
+    --      return vim.g["dotnet_last_dll_path"]
+    --    end
+    --    local launch_json = vim.fn.getcwd() .. "/.nvim/env.json"
+    --    local readAll = function(file)
+    --      local f = assert(io.open(file, "rb"))
+    --      local content = f:read("*all")
+    --      f:close()
+    --      return content
+    --    end
+    --
+    --    local load_json = function()
+    --      return vim.json.decode(readAll(launch_json))
+    --    end
+    --    vim.g.dotnet_get_env = function()
+    --      if vim.g["dotnet_env_vars"] == nil then
+    --        vim.g["dotnet_env_vars"] = load_json()
+    --      end
+    --      return vim.g["dotnet_env_vars"]
+    --    end
+    --
+    --    local config = {
+    --      {
+    --        type = "coreclr",
+    --        name = "launch - netcoredbg",
+    --        request = "launch",
+    --        console = "integratedTerminal",
+    --        env = vim.g.dotnet_get_env,
+    --        program = function()
+    --          if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+    --            vim.g.dotnet_build_project()
+    --          end
+    --          local dll = vim.g.dotnet_get_dll_path()
+    --          return dll
+    --        end,
+    --      },
+    --      {
+    --        type = "coreclr",
+    --        name = "attach",
+    --        request = "attach",
+    --        console = "integratedTerminal",
+    --        env = vim.g.dotnet_get_env,
+    --        processId = function()
+    --          return vim.fn.input('Process Id:')
+    --        end,
+    --        program = function()
+    --          return '/home/peter/playbk/pbk-api-core/Pbk.Api/bin/Debug/net6.0/Pbk.Api.dll'
+    --        end
+    --      }
+    --    }
+    --
+    --    dap.configurations.cs = config
 
     dap.listeners.after.event_initialized['dapui_config'] = function()
       dapui.open()

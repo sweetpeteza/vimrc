@@ -30,7 +30,7 @@ return {
   --   require 'lspconfig'.omnisharp.setup(config)
   -- end,
   config = function()
-    vim.g.OmniSharp_server_path = '/home/peter/omnisharp-linux-x64/run'
+    --vim.g.OmniSharp_server_path = '/home/peter/omnisharp-linux-x64/run'
 
     vim.g.OmniSharp_diagnostic_exclude_paths = {
       'obj\\',
