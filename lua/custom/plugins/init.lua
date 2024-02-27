@@ -218,6 +218,7 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-lua/popup.nvim',
+            'nvim-telescope/telescope-ui-select.nvim',
             -- Fuzzy Finder Algorithm which requires local dependencies to be built.
             -- Only load if `make` is available. Make sure you have the system
             -- requirements installed.
@@ -231,6 +232,9 @@ return {
                 end,
             },
         },
+        config = function()
+            require("telescope").load_extension("ui-select")
+        end
     },
     -- another fuzzy finder
     {
@@ -255,6 +259,15 @@ return {
             vim.notify = require("notify")
         end
     },
+    {
+        'mrded/nvim-lsp-notify',
+        dependencies = {
+            'rcarriga/nvim-notify'
+        },
+        config = function()
+            require('lsp-notify').setup({})
+        end
+    },
     -- lazy.nvim
     {
         "folke/noice.nvim",
@@ -269,7 +282,7 @@ return {
             -- OPTIONAL:
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
-            --"rcarriga/nvim-notify",
+            "rcarriga/nvim-notify",
         },
         { -- This plugin
             "Zeioth/compiler.nvim",

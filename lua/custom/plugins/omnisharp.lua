@@ -9,29 +9,7 @@ return {
       lazy = true
     }
   },
-  -- init = function()
-  --   local pid = vim.fn.getpid()
-  --   local omnisharp_bin = "/home/peter/omnisharp-linux-x64/run"
-
-  --   local config = {
-  --     handlers = {
-  --       ["textDocument/definition"] = require('omnisharp_extended').handler,
-  --     },
-  --     cmd = { omnisharp_bin, '--languageserver', '--hostPID', tostring(pid) },
-  --     -- rest of your settings
-  --     server = {
-  --       on_attach = function(_, bufnr)
-  --         vim.keymap.set("n", "gD", require('omnisharp_extended').lsp_definitions,
-  --           { buffer = bufnr, desc = '[G]oto [D]efinition V2' })
-  --       end
-  --     },
-  --   }
-
-  --   require 'lspconfig'.omnisharp.setup(config)
-  -- end,
   config = function()
-    --vim.g.OmniSharp_server_path = '/home/peter/omnisharp-linux-x64/run'
-
     vim.g.OmniSharp_diagnostic_exclude_paths = {
       'obj\\',
       '[Tt]emp\\',
