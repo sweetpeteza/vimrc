@@ -2,7 +2,7 @@ require 'lspconfig'.sqlls.setup {
   cmd = { "/usr/local/bin/sql-language-server", "up", "--stdio" },
   filetypes = { "sql", "mysql" },
   root_dir = function()
-    return vim.loop.os_homedir()
+    return root_pattern(fname) or vim.loop.os_homedir()
   end,
   settings = {},
   on_attach = function(_, bufnr)
@@ -188,6 +188,23 @@ require 'lspconfig'.omnisharp.setup {
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
       vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
+
+    vim.diagnostic.config({
+      virtual_text = {
+        show = "ifmany"
+      },
+      virtual_lines = {
+        show = "ifmany"
+      },
+      signs = true,
+      underline = true,
+
+    })
+    local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
   end
 
 }
@@ -246,11 +263,12 @@ cmp.setup {
     { name = 'copilot' },
     { name = 'vim-dadbod-completion' }
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
+  --window = {
+  --  completion = cmp.config.window.bordered(),
+  --  documentation = cmp.config.window.bordered(),
+  --},
   formatting = {
+    expandable_indicator = true,
     fields = { 'menu', 'abbr', 'kind' },
     format = function(entry, item)
       local menu_icon = {

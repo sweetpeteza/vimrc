@@ -72,4 +72,5 @@ require('lazy').setup({
 --require("lazy").setup("plugins")
 require("custom.remaps.remap")
 require("custom.settings.set")
+require("custom.styling.completion_kinds")
 require("custom.lsp.init")

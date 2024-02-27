@@ -25,6 +25,9 @@ return {
 
     vim.g.OmniSharp_server_use_mono = 0
     vim.g.OmniSharp_server_use_net6 = 1
+    vim.g.OmniSharp_popup = 0
+
+    vim.g.OmniSharp_timeout = 5
   end,
   --  ft = "cs"
 }
