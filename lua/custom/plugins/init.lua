@@ -15,7 +15,6 @@ return {
     -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
-    'theprimeagen/git-worktree.nvim',
     -- Lua
     {
         "0oAstro/dim.lua",
@@ -198,9 +197,16 @@ return {
         priority = 1000,
         opts = {
             integrations = {
+                alpha = true,
                 cmp = true,
-                --   gitsigns = true,
+                gitsigns = true,
+                harpoon = true,
                 nvimtree = true,
+                telescope = {
+                    enabled = true,
+                    -- style = "nvchad"
+                },
+                lsp_trouble = true,
                 treesitter = true,
                 notify = true,
                 mini = {

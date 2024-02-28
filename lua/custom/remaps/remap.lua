@@ -126,6 +126,12 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
+-- Git worktree
+vim.keymap.set('n', '<leader>gws', require('telescope').extensions.git_worktree.git_worktrees,
+    { desc = 'Show Git Worktrees' })
+vim.keymap.set('n', '<leader>gwa', require('telescope').extensions.git_worktree.create_git_worktree,
+    { desc = 'Create Git Worktrees' })
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
@@ -209,7 +215,7 @@ vim.api.nvim_set_keymap('n', '<F6>', "<cmd>CompilerOpen<cr>", { noremap = true, 
 
 -- Redo last selected option
 vim.api.nvim_set_keymap('n', '<S-F6>',
-    "<cmd>CompilerStop<cr>"  -- (Optional, to dispose all tasks before redo)
+    "<cmd>CompilerStop<cr>" -- (Optional, to dispose all tasks before redo)
     .. "<cmd>CompilerRedo<cr>",
     { noremap = true, silent = true })
 

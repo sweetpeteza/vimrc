@@ -47,7 +47,7 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.g.sonokai_style = 'andromeda'
 vim.g.sonokai_better_performance = 1
 
-vim.cmd.colorscheme "onedark"
+vim.cmd.colorscheme "catppuccin-mocha"
 
 --vim.g.aurora_italic = 1      -- italic
 --vim.g.aurora_transparent = 1 -- transparent
