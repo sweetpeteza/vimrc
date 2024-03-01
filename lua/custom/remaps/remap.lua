@@ -222,6 +222,9 @@ vim.api.nvim_set_keymap('n', '<S-F6>',
 -- Toggle compiler results
 vim.api.nvim_set_keymap('n', '<S-F7>', "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
 
+-- Silicon
+vim.keymap.set('n', '<leader>sc', ":Silicon<CR>", { desc = 'Snapshot Code' })
+
 -- document existing key chains
 require('which-key').register({
     ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
