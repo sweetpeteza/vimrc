@@ -23,13 +23,6 @@ return {
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
     {
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require 'alpha'.setup(require 'alpha.themes.startify'.config)
-        end
-    },
-    {
         "kdheepak/lazygit.nvim",
         -- optional for floating window border decoration
         dependencies = {
