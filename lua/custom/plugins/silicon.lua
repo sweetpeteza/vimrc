@@ -9,6 +9,7 @@ return
             background = '#87f',
             theme = 'Monokai Extended',
             line_number = true,
+            line_offset = vim.api.nvim__buf_stats(0).current_lnum,
             pad_vert = 80,
             pad_horiz = 50,
             output = {
