@@ -23,5 +23,11 @@ return {
     { 'folke/which-key.nvim',  opts = {} },
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
-    'antoinemadec/FixCursorHold.nvim'
+    'antoinemadec/FixCursorHold.nvim',
+
+    'dart-lang/dart-vim-plugin',
+    'thosakwe/vim-flutter',
+    'natebosch/vim-lsc',
+    'natebosch/vim-lsc-dart',
+    'ionide/Ionide-vim'
 }

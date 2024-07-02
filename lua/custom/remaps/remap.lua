@@ -37,6 +37,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
+--JQ
+vim.keymap.set("n", "<leader>jq", ":%!jq<CR>");
+vim.keymap.set("v", "<leader>jq", "!jq<CR>");
+
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
@@ -138,8 +142,7 @@ vim.keymap.set('n', '<leader>gwa', require('telescope').extensions.git_worktree.
 vim.defer_fn(function()
     require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc',
-            'vim' },
+        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'markdown', 'markdown_inline', 'vim' },
 
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
         auto_install = false,

@@ -10,6 +10,7 @@ return {
     }
   },
   config = function()
+    --vim.g.OmniSharp_server_path = '/home/peter/omnisharp/OmniSharp' --'/home/me/omnisharp/omnisharp.http-linux-x64/run'
     vim.g.OmniSharp_diagnostic_exclude_paths = {
       'obj\\',
       '[Tt]emp\\',
