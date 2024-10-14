@@ -6,3 +6,11 @@ vim.api.nvim_create_user_command(
     end,
     { bang = false }
 )
+
+vim.api.nvim_create_user_command(
+    "Today",
+    function()
+        vim.api.nvim_command(':ObsidianToday')
+    end,
+    { bang = false }
+)

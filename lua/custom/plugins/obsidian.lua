@@ -57,5 +57,7 @@ return {
       min_chars = 2,
 
     },
+
+    enable_ui = false
   },
 }

@@ -171,4 +171,4 @@ return {
   config = function()
     require 'alpha'.setup(configure())
   end
-};
+}

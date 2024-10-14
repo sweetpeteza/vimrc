@@ -1,6 +1,6 @@
 return {
   'dense-analysis/ale',
-  enabled = false,
+  enabled = true,
   config = function()
     vim.g.ale_linters = {
       cs = { 'OmniSharp' }

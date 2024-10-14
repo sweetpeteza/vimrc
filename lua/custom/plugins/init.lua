@@ -29,5 +29,6 @@ return {
     'thosakwe/vim-flutter',
     'natebosch/vim-lsc',
     'natebosch/vim-lsc-dart',
-    'ionide/Ionide-vim'
+    'ionide/Ionide-vim',
+    'vim-test/vim-test'
 }
