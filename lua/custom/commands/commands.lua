@@ -8,6 +8,14 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
+    "F",
+    function()
+        vim.api.nvim_command(':Neoformat')
+    end,
+    { bang = false }
+)
+
+vim.api.nvim_create_user_command(
     "Today",
     function()
         vim.api.nvim_command(':ObsidianToday')

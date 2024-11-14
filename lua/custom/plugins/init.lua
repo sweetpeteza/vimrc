@@ -8,7 +8,6 @@ return {
     'christoomey/vim-tmux-navigator',
     'xiyaowong/transparent.nvim',
     'gpanders/editorconfig.nvim',
-    'sbdchd/neoformat',
     --    'puremourning/vimspector',
     'c60cb859/bufMov.nvim',
     -- Git related plugins
