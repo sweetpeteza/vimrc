@@ -214,6 +214,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+
+
 -- ## Compiler.nvim ##
 
 -- Open compiler
@@ -229,7 +231,7 @@ vim.api.nvim_set_keymap('n', '<S-F6>',
 vim.api.nvim_set_keymap('n', '<S-F7>', "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
 
 -- Silicon
-vim.keymap.set('v', '<leader>sc', ":Silicon<CR>", { desc = 'Snapshot Code' })
+vim.keymap.set('v', '<leader>sc', require("nvim-silicon").shoot, { desc = 'Snapshot Code' })
 
 vim.keymap.set('n', '<leader>dt', ":TestNearest<CR>", { desc = "Test Nearest" })
 vim.keymap.set('n', '<leader>dT', ":TestFile<CR>")

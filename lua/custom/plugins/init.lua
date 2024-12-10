@@ -29,5 +29,7 @@ return {
     'natebosch/vim-lsc',
     'natebosch/vim-lsc-dart',
     'ionide/Ionide-vim',
-    'vim-test/vim-test'
+    'vim-test/vim-test',
+    'czheo/mojo.vim',
+    'jubnzv/virtual-types.nvim'
 }

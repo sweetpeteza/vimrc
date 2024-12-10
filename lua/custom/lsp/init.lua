@@ -47,6 +47,7 @@ capabilities.textDocument.colorProvider = {
   dynamicRegistration = true
 }
 
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -94,6 +95,32 @@ local on_attach = function(client, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
+  -- Only Neovim 0.7
+  if client.server_capabilities.codeLensProvider then
+    local codelens = vim.api.nvim_create_augroup(
+      'LSPCodeLens',
+      { clear = true }
+    )
+    vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+      group = codelens,
+      callback = function()
+        vim.lsp.codelens.refresh()
+      end,
+      buffer = bufnr,
+      once = true,
+    })
+    vim.api.nvim_create_autocmd({ 'BufWritePost', 'CursorHold' }, {
+      group = codelens,
+      callback = function()
+        vim.lsp.codelens.refresh()
+      end,
+      buffer = bufnr,
+    })
+  end
+
+  vim.keymap.set("n", "<leader>nn", require 'rust-tools'.inlay_hints.enable, { buffer = bufnr })
+  vim.keymap.set("n", "<leader><S-n><S-n>", require 'rust-tools'.inlay_hints.disable, { buffer = bufnr })
+
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -115,6 +142,20 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+--PYTHON LSP
+require 'lspconfig'.pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
+
 -- OMNISHARP START
 require 'lspconfig'.omnisharp.setup {
   capabilities = capabilities,
@@ -154,7 +195,7 @@ require 'lspconfig'.omnisharp.setup {
     -- true
     analyze_open_documents_only = false,
   },
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
     -- NOTE: Remember that lua is a real programming language, and as such it is possible
     -- to define small helper and utility functions so you don't have to repeat yourself
     -- many times.
@@ -197,6 +238,29 @@ require 'lspconfig'.omnisharp.setup {
       --vim.lsp.buf.format()
       vim.api.nvim_command(':!dotnet csharpier ' .. vim.api.nvim_buf_get_name(0))
     end, { desc = 'Format current buffer with LSP' })
+
+    -- Only Neovim 0.7
+    if client.server_capabilities.codeLensProvider then
+      local codelens = vim.api.nvim_create_augroup(
+        'LSPCodeLens',
+        { clear = true }
+      )
+      vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+        group = codelens,
+        callback = function()
+          vim.lsp.codelens.refresh()
+        end,
+        buffer = bufnr,
+        once = true,
+      })
+      vim.api.nvim_create_autocmd({ 'BufWritePost', 'CursorHold' }, {
+        group = codelens,
+        callback = function()
+          vim.lsp.codelens.refresh()
+        end,
+        buffer = bufnr,
+      })
+    end
 
     vim.diagnostic.config({
       virtual_text = {

@@ -19,7 +19,8 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
-    'theHamsta/nvim-dap-virtual-text'
+    'theHamsta/nvim-dap-virtual-text',
+    'mfussenegger/nvim-dap-python'
 
   },
   config = function()
@@ -95,5 +96,10 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    -- Install python specific config
+    require("dap-python").setup("python3")
+    -- If using the above, then `python3 -m debugpy --version`
+    -- must work in the shell
   end,
 }
