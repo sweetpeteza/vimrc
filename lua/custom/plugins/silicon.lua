@@ -17,9 +17,9 @@ return {
         -- the font settings with size and fallback font
         -- Example: font = "VictorMono NF=34;Noto Emoji",
         --font = nil
-        font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+        --    font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
         -- the theme to use, depends on themes available to silicon
-        theme = "sonokai",
+        --theme = "sonokai",
         -- the background color outside the rendered os window
         -- (in hexcode string e.g "#076678")
         background = nil,
