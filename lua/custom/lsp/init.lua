@@ -35,7 +35,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  sqlls = {}
+  sqlls = {},
 }
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -156,6 +156,9 @@ require 'lspconfig'.pylsp.setup {
   }
 }
 
+
+
+
 -- OMNISHARP START
 require 'lspconfig'.omnisharp.setup {
   capabilities = capabilities,
@@ -164,13 +167,7 @@ require 'lspconfig'.omnisharp.setup {
     -- settings from .editorconfig.
     enable_editorconfig_support = true,
 
-    -- If true, MSBuild project system will only load projects for files that
-    -- were opened in the editor. This setting is useful for big C# codebases
-    -- and allows for faster initialization of code navigation features only
-    -- for projects that are relevant to code that is being edited. With this
-    -- setting enabled OmniSharp may load fewer projects and may thus display
-    -- incomplete reference lists for symbols.
-    enable_ms_build_load_projects_on_demand = false,
+    -- If true, MSBuild project system will only load projects for files tha
 
     -- Enables support for roslyn analyzers, code fixes and rulesets.
     enable_roslyn_analyzers = true,
@@ -282,6 +279,8 @@ require 'lspconfig'.omnisharp.setup {
 
 }
 -- OMNISHARP END
+
+require('lspconfig').gleam.setup({})
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`

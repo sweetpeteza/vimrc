@@ -80,14 +80,14 @@ return {
         to_clipboard = true,
         -- a string or function returning a string that defines the title
         -- showing in the image, only works in silicon versions greater than v0.5.1
-        window_title = nil,
+        -- ORIG: window_title = nil,
         -- here a function is used to get the name of the current buffer
-        -- window_title = function()
-        --     return vim.fn.fnamemodify(
-        --         vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()),
-        --         ":t"
-        --     )
-        -- end,
+        window_title = function()
+            return vim.fn.fnamemodify(
+                vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()),
+                ":t"
+            )
+        end,
 
         -- how to deal with the clipboard on WSL2
         -- possible values are: never, always, auto
