@@ -6,7 +6,7 @@ return {
     'theprimeagen/harpoon',
     'mbbill/undotree',
     'christoomey/vim-tmux-navigator',
-    'xiyaowong/transparent.nvim',
+    --    'xiyaowong/transparent.nvim',
     'gpanders/editorconfig.nvim',
     --    'puremourning/vimspector',
     'c60cb859/bufMov.nvim',
@@ -16,7 +16,7 @@ return {
     -- Lua
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
-    'aquach/vim-http-client',
+    --   'aquach/vim-http-client',
     { "nvim-neotest/nvim-nio" },
     -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim',  opts = {} },
@@ -28,7 +28,7 @@ return {
     'thosakwe/vim-flutter',
     'natebosch/vim-lsc',
     'natebosch/vim-lsc-dart',
-    'ionide/Ionide-vim',
+    --'ionide/Ionide-vim',
     'vim-test/vim-test',
     'czheo/mojo.vim',
     'jubnzv/virtual-types.nvim'
